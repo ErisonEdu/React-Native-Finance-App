@@ -1,1 +1,1 @@
-PowerUp2
+PowerUp React Native - Finance App
