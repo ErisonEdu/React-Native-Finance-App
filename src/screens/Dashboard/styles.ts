@@ -42,7 +42,7 @@ export const User  = styled.View`
 export const UserGreeting  = styled.Text`
     color: ${({theme}) => theme.colors.shape};
     font-size: ${RFValue(18)}px;
-    font-family: ${({theme}) => theme.font.Regular}
+    font-family: ${({theme}) => theme.font.Regular};
 `;
 
 export const UserName  = styled.Text`
