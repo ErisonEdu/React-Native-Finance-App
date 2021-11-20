@@ -16,14 +16,16 @@ export const Header = styled.View`
     background-color: ${({theme}) => theme.colors.primary};
 
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     flex-direction: row;
 `;
 
 export const UserWrapper = styled.View`
     flex-direction:row;
+
     width: 100%;
     padding: 0 24px;
+    margin-top: ${RFValue(20)}px;
     justify-content: space-between;
 `;
 
@@ -57,4 +59,13 @@ export const UserName  = styled.Text`
 export const PowerIcon = styled(Power)`
     color: ${({theme}) => theme.colors.secondary};
     font-size: ${RFValue(24)}px;
+`;
+
+export const HighlightCards = styled.ScrollView.attrs({
+    horizontal: true,
+    showsHorizontalScrollIndicator: false,
+    contentContainerStyle: {paddingHorizontal:24},
+})`
+    position: absolute;
+    padding-top: ${RFPercentage(20)}px;
 `;
