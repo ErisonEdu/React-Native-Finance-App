@@ -1,5 +1,6 @@
 import styled from 'styled-components/native';
-import { RFPercentage, RFValue } from 'react-native-responsive-fontsize'
+import { RFPercentage, RFValue } from 'react-native-responsive-fontsize';
+import { Power} from 'react-native-feather';
 
 export const Container = styled.View`
     flex:1;
@@ -20,8 +21,10 @@ export const Header = styled.View`
 `;
 
 export const UserWrapper = styled.View`
+    flex-direction:row;
     width: 100%;
     padding: 0 24px;
+    justify-content: space-between;
 `;
 
 export const UserInfo  = styled.View`
@@ -48,5 +51,10 @@ export const UserGreeting  = styled.Text`
 export const UserName  = styled.Text`
     color: ${({theme}) => theme.colors.shape};
     font-size: ${RFValue(18)}px;
-    font-family: ${({theme}) => theme.font.Bold}
+    font-family: ${({theme}) => theme.font.Bold};
+`;
+
+export const PowerIcon = styled(Power)`
+    color: ${({theme}) => theme.colors.secondary};
+    font-size: ${RFValue(24)}px;
 `;
