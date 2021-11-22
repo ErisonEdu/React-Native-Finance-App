@@ -1,11 +1,12 @@
 import React from 'react';
 import { HighlightCard } from '../../components/HighlightCard';
+import {TransactionCard} from '../../components/TransactionCard'
 
 import {
     Container, Header, UserWrapper,
     UserInfo, Photo, User,
     UserGreeting, UserName, PowerIcon,
-    HighlightCards,
+    HighlightCards, Transactions, Title, 
 } from './styles';
 
 export function Dashboard() {
@@ -45,6 +46,10 @@ export function Dashboard() {
                         lastTransaction='Ultima entrada dia 22/11/2021'
                     />
                 </HighlightCards>
+                <Transactions>
+                    <Title>Listagem</Title>
+                    <TransactionCard/>
+                </Transactions>
             </Container>
         </>
     )
