@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 import { RFPercentage, RFValue } from 'react-native-responsive-fontsize';
-import { Power} from 'react-native-feather';
+import  Icon  from 'react-native-vector-icons/Feather';
 
 export const Container = styled.View`
     flex:1;
@@ -56,7 +56,9 @@ export const UserName  = styled.Text`
     font-family: ${({theme}) => theme.font.Bold};
 `;
 
-export const PowerIcon = styled(Power)`
+export const PowerIcon = styled(Icon).attrs({
+    name: 'power'
+})`
     color: ${({theme}) => theme.colors.secondary};
     font-size: ${RFValue(24)}px;
 `;

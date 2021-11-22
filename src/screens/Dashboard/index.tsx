@@ -2,15 +2,9 @@ import React from 'react';
 import { HighlightCard } from '../../components/HighlightCard';
 
 import {
-    Container,
-    Header,
-    UserWrapper,
-    UserInfo,
-    Photo,
-    User,
-    UserGreeting,
-    UserName,
-    PowerIcon,
+    Container, Header, UserWrapper,
+    UserInfo, Photo, User,
+    UserGreeting, UserName, PowerIcon,
     HighlightCards,
 } from './styles';
 
@@ -31,11 +25,25 @@ export function Dashboard() {
                         <PowerIcon/>
                     </UserWrapper>
                 </Header>
-                
                 <HighlightCards>
-                    <HighlightCard/>
-                    <HighlightCard/>
-                    <HighlightCard/>
+                    <HighlightCard
+                        type='income'
+                        title='Entradas'
+                        amount='R$ 25.997,88'
+                        lastTransaction='Ultima entrada dia 22/11/2021'
+                    />
+                    <HighlightCard
+                        type='outflow'
+                        title='Saida'
+                        amount='R$ - 100,88'
+                        lastTransaction='Ultima entrada dia 22/11/2021'
+                    />
+                    <HighlightCard
+                        type='total'
+                        title='Tatal'
+                        amount='= R$ 25.897,00'
+                        lastTransaction='Ultima entrada dia 22/11/2021'
+                    />
                 </HighlightCards>
             </Container>
         </>

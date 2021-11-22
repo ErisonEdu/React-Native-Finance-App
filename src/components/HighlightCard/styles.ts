@@ -1,9 +1,16 @@
-import styled from 'styled-components/native';
+import styled, {css} from 'styled-components/native';
 import { RFValue } from 'react-native-responsive-fontsize';
-import { ArrowUpCircle } from 'react-native-feather';
+import Icon from 'react-native-vector-icons/Feather'
 
-export const Container = styled.View`
-    background-color: ${({theme}) => theme.colors.shape};
+interface iCardTransactionIcon {
+    type: 'income'| 'outflow' | 'total'
+}
+
+export const Container = styled.View<iCardTransactionIcon>`
+    background-color: ${({theme, type}) =>
+        type === 'total' ?
+        theme.colors.success:
+        theme.colors.shape};
 
     width: ${RFValue(300)}px;
     border-radius: ${RFValue(7)}px;
@@ -18,34 +25,59 @@ export const CardHeader = styled.View`
     justify-content: space-between;
 `;
 
-export const Tittle = styled.Text`
+export const Tittle = styled.Text<iCardTransactionIcon>`
     font-family: ${({theme}) => theme.font.Regular};
     font-size: ${RFValue(14)}px;
+    color: ${({theme, type}) =>
+        type === 'total' ?
+        theme.colors.shape:
+        theme.colors.text_dark};
+`;
+
+export const CardTransactionIcon = styled(Icon).attrs({
+    size : 40,
+})<iCardTransactionIcon>`
     color: ${({theme}) => theme.colors.text_dark};
+
+    ${(props) => props.type === 'income' && css`
+        color: ${({theme}) => theme.colors.success}
+    `};
+
+    ${(props) => props.type === 'outflow' && css`
+        color: ${({theme}) => theme.colors.attention}
+    `};
+
+    ${(props) => props.type === 'total' && css`
+        color: ${({theme}) => theme.colors.golden}
+    `};
 `;
 
-export const CardTransactionIcon = styled(ArrowUpCircle).attrs({
-    width: '40px',
-    height: '40px'
-})`
-    color: ${({theme}) => theme.colors.text_dark};
+export const CardBody = styled.View<iCardTransactionIcon>`
+    background-color: ${({theme, type}) =>
+        type === 'outflow' ?
+        theme.colors.attention_light:
+        theme.colors.success_light
+    };
+    border-radius: 7px;
 `;
 
-export const CardBody = styled.View`
-
-`;
-
-export const Amount = styled.Text`
+export const Amount = styled.Text<iCardTransactionIcon>`
     font-family: ${({theme}) => theme.font.Medium};
     font-size: ${RFValue(32)}px;
-
-    color: ${({theme}) => theme.colors.text_dark};
-
     margin-top: 38px;
+
+    color: ${({theme, type}) =>
+        type === 'total' ?
+        theme.colors.shape:
+        theme.colors.text_dark};
+
 `;
 
-export const LastTransaction = styled.Text`
+export const LastTransaction = styled.Text<iCardTransactionIcon>`
     font-family: ${({theme}) => theme.font.Regular};
     font-size: ${RFValue(12)}px;
-    color: ${({theme}) => theme.colors.text_dark};
+    color: ${({theme, type}) =>
+        type === 'total' ?
+        theme.colors.shape:
+        theme.colors.text};
 `;
