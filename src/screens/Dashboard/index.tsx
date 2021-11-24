@@ -1,15 +1,57 @@
 import React from 'react';
 import { HighlightCard } from '../../components/HighlightCard';
-import {TransactionCard} from '../../components/TransactionCard'
+import {TransactionCard, TransactionCardProps} from '../../components/TransactionCard'
 
 import {
     Container, Header, UserWrapper,
     UserInfo, Photo, User,
     UserGreeting, UserName, PowerIcon,
-    HighlightCards, Transactions, Title, 
+    HighlightCards, Transactions, Title,
+    TransactionList
 } from './styles';
 
+export interface DataListProps extends TransactionCardProps{
+    id: string
+}
+
 export function Dashboard() {
+
+    const data: DataListProps[] = [
+        {
+            id: '1',
+            type: 'positive',
+            title: 'Desenvolvimento de App React Native',
+            amount: 'R$ 29,333.66',
+            category: {
+                iconName: 'dollar-sign',
+                name: 'vendas'
+            },
+            date: '23/11/2021'
+        },
+        {
+            id: '2',
+            type: 'positive',
+            title: 'Desenvolvimento de App React Native',
+            amount: 'R$ 99,333.66',
+            category: {
+                iconName: 'dollar-sign',
+                name: 'vendas'
+            },
+            date: '23/11/2021'
+        },
+        {
+            id: '3',
+            type: 'negative',
+            title: 'Internet',
+            amount: 'R$ 29.00',
+            category: {
+                iconName: 'coffee',
+                name: 'Consumo'
+            },
+            date: '23/11/2021'
+        }
+    ]
+
     return(
         <>
             <Container>
@@ -48,7 +90,11 @@ export function Dashboard() {
                 </HighlightCards>
                 <Transactions>
                     <Title>Listagem</Title>
-                    <TransactionCard/>
+                    <TransactionList
+                        data={data}
+                        keyExtractor={ (item) => item.id}
+                        renderItem={({item}) => <TransactionCard data={item}/>}
+                    />
                 </Transactions>
             </Container>
         </>

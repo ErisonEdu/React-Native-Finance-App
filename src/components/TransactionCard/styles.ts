@@ -2,11 +2,15 @@ import styled from 'styled-components/native';
 import {RFValue} from 'react-native-responsive-fontsize';
 import Icon from 'react-native-vector-icons/Feather'
 
+interface TransactionCardListProps {
+    type: 'positive' | 'negative'
+}
 
 export const Container = styled.View`
     background-color: ${({theme}) => theme.colors.shape};
     border-radius: 5px;
-    padding: 17px 24px;;
+    padding: 17px 24px;
+    margin-bottom: 16px;
 `;
 
 export const Title = styled.Text`
@@ -15,10 +19,13 @@ export const Title = styled.Text`
     color: ${({theme}) => theme.colors.text_dark};
 `;
 
-export const Amount = styled.Text`
+export const Amount = styled.Text<TransactionCardListProps>`
     font-family: ${({theme}) => theme.font.Regular};
     font-size: ${RFValue(20)}px;
-    color: ${({theme}) => theme.colors.text_dark};
+    color: ${({theme, type}) =>
+    type === 'positive' ?
+    theme.colors.success:
+    theme.colors.attention};
     margin-top: 2px;
 `;
 
@@ -34,9 +41,7 @@ export const Category = styled.View`
     align-items:center;
 `;
 
-export const CategoryIcon= styled(Icon).attrs({
-    name: 'dollar-sign',
-})`
+export const CategoryIcon = styled(Icon)`
     font-size: ${RFValue(20)}px;
     color: ${({theme}) => theme.colors.text};
 `;
